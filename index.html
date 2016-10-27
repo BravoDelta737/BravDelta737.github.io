@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+        <style>
+            *{
+                font-size: 1vw;
+                text-overflow: ellipsis;
+            }
+            .bingoBtn{
+                height: 20vh;
+                width: 20vw;
+            }
+            .Holder{
+                width : 50vw;
+            }
+            .clicked{
+                text-decoration: line-through;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="Holder">
+        <table>
+            
+        </table>
+            </div>
+        <script>
+            var possibleSpaces = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
+            var spaces = ["Fake Legal Threat","Bad English","Syskey","Windows key + R","Secure Connection","One Time Charge",
+                          "Technician","Microsoft Certified/Affiliate","Teamviewer","Tree Command","$199.99+","855 Area Code","Viruses","White Name","Dextop","Do one Thing", "Each And Every Thing","What Version Of Windows?","Secure.me","There Are Hackers In Your Computer","I Can't Understand You","Event Viewer","Secure Server","Transfer to Manager","Wirus"];
+            console.log(spaces.length);
+           $(document).ready(function(){
+              for(var i = 0; i < 5; i++){
+                  $('table').append('<tr>');
+                  for(var j = 0; j < 5; j++){
+                      var randNum = Math.floor((Math.random() * possibleSpaces.length) + 0);
+                      var ranFromIndex = possibleSpaces[randNum];
+                      possibleSpaces.splice(randNum,1);
+                      $('table').append('<td><button class="bingoBtn'+(i==j&&i==2?" clicked":"")+'" id="'+( i + (j+5) )+'">' + ((i==j && i==2)? "Indian Accent" : spaces[ranFromIndex]) + '</td>');
+                  }
+                  $('table').append('</tr>');
+              }
+            $('.bingoBtn').click(function(){
+                if($(this).hasClass("clicked")){
+                    $(this).removeClass("clicked");   
+                }else{
+               $(this).addClass("clicked");
+                }
+            });
+           });
+        </script>
+    </body>
+</html>
